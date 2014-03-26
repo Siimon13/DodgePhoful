@@ -11,13 +11,9 @@ TBD
 
 ##Log
 ### Week 1
-<<<<<<< HEAD
+
 Simon
 - Created phonegap Hello word webapp
-=======
-Siimon
-- TBD
 
->>>>>>> ab47ca0aa8efbba770f926ce0430d473bee88010
 Haoxin
 - TBD
