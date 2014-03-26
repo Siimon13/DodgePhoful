@@ -11,7 +11,7 @@ TBD
 
 ##Log
 ### Week 1
-Simon
+Siimon
 - TBD
 
 Haoxin
