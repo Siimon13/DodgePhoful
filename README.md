@@ -13,5 +13,6 @@ TBD
 ### Week 1
 Simon
 - TBD
+- 
 Haoxin
 - TBD
