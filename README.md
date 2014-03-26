@@ -12,6 +12,6 @@ TBD
 ##Log
 ### Week 1
 Simon
-- TBD
+- Created phonegap Hello word webapp
 Haoxin
 - TBD
