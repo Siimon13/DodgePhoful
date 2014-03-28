@@ -40,9 +40,22 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
+	
+	var displayElement = document.getElementById("disloc");
+	var pos = "";
+	var onSuccess = function(position){
+	    pos = 'lat + long: ' + position.coords.latitude + ' ' + position.coords.longitude;
+	    displayElement.setAttribute("value",pos);
+	};
+	
+	var onError = function(error){
+	    pos = 'code: ' + error.code + ' message: ' + error.message;
+	    displayElement.setAttribute("value",pos);
+	}
 
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
+	navigator.geolocation.getCurrentPosition(onSuccess,onError);
 
         console.log('Received Event: ' + id);
     }
