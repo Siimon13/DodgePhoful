@@ -19,6 +19,7 @@
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/spec.html \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/icon.png \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/css \
+/home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/#index.html# \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/cordova_plugins.js \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/js \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/cordova.js \
