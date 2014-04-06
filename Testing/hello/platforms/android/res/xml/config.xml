@@ -4,15 +4,14 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
-    <name>HelloWorld</name>
+    <name>DodgePhoful</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        DodgePhoful is an app that allows users to players to play virtual dodge ball with each other users of the app. The user also has the option to set traps. Utilizes the compass and accelerometer to stimulate the throwing of a dodge ball. For collision with the dodgeball, we used the players GPS location.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="chen.simon89@gmail.com" href="http://phonegap.com">
+        Team HaoSim 
     </author>
     <feature name="http://api.phonegap.com/1.0/device" />
-    <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />

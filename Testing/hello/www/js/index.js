@@ -20,6 +20,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+	navigator.geolocation.watchPosition(getLoc);
     },
     // Bind Event Listeners
     //
@@ -47,3 +48,10 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+    
+function getLoc(position){
+    console.log("updating")
+    document.getElementById('latitude').innerHTML = position.coords.latitude;
+    document.getElementById('longitude').innerHTML = position.coords.longitude;
+}

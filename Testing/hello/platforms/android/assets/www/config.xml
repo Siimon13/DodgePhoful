@@ -6,14 +6,14 @@
         id        = "com.phonegap.helloworld"
         version   = "1.0.0">
 
-    <name>HelloWorld</name>
+    <name>DodgePhoful</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        DodgePhoful is an app that allows users to players to play virtual dodge ball with each other users of the app. The user also has the option to set traps. Utilizes the compass and accelerometer to stimulate the throwing of a dodge ball. For collision with the dodgeball, we used the players GPS location.
     </description>
 
-    <author href="http://phonegap.com" email="support@phonegap.com">
-        PhoneGap Team
+    <author href="http://phonegap.com" email="chen.simon89@gmail.com">
+        Team HaoSim 
     </author>
 
     <!--
@@ -27,7 +27,7 @@
         following tag to your config.xml; you will still have the INTERNET
         permission on your app, which PhoneGap requires.
     -->
-    <preference name="permissions"                value="none"/>
+    <!-- <preference name="permissions"                value="none"/> -->
 
     <!-- Customize your app and platform with the preference element. -->
     <!-- <preference name="phonegap-version"      value="3.4.0" /> -->      <!-- all: current version of PhoneGap -->

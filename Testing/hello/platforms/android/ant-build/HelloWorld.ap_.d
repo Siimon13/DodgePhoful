@@ -5,6 +5,7 @@
 /home/simon/DodgePhoful/Testing/hello/platforms/android/res/drawable-hdpi/icon.png \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/res/drawable-xhdpi/icon.png \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/res/drawable-mdpi/icon.png \
+/home/simon/DodgePhoful/Testing/hello/platforms/android/res/xml/plugins.xml \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/res/xml/config.xml \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/ant-build/res/drawable/icon.png \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/ant-build/res/drawable-ldpi/icon.png \
@@ -18,8 +19,8 @@
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/spec \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/spec.html \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/icon.png \
+/home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/Dodgelogo.png \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/css \
-/home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/#index.html# \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/cordova_plugins.js \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/js \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/cordova.js \
@@ -88,6 +89,7 @@
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/res/screen/ios/screen-iphone-landscape.png \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/res/screen/ios/screen-iphone-portrait-2x.png \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/img/logo.png \
+/home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/img/icon.png \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/spec/index.js \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/spec/lib \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/assets/www/spec/helper.js \
