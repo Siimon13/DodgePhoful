@@ -20,7 +20,8 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-	navigator.geolocation.watchPosition(getLoc);
+	navigator.geolocation.getCurrentPosition(getLoc,null);
+	navigator.compass.getCurrentHeading(getHeading,null);
     },
     // Bind Event Listeners
     //
@@ -54,4 +55,9 @@ function getLoc(position){
     console.log("updating")
     document.getElementById('latitude').innerHTML = position.coords.latitude;
     document.getElementById('longitude').innerHTML = position.coords.longitude;
+    
+}
+
+function getHeading(heading){
+    document.getElementById('heading').innerHTML = heading.getmagneticHeading;
 }

@@ -13,4 +13,5 @@ function getLoc(position){
     console.log("updating")
     document.getElementById('latitude').innerHTML = position.coords.latitude;
     document.getElementById('longitude').innerHTML = position.coords.longitude;
+    document.getElementById('heading').innerHTML = position.coords.heading;
 }
