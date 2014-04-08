@@ -4,7 +4,11 @@ A dodgeball like augmented reality game using geolocation and accelerometer data
 
 ##The Team
 - [Siimon](https://github.com/Siimon13)
+
+	Does the gps/server things. Will make the game engine and get the app working. Aka. Back End
 - [Haoxin](https://github.com/HaoxinLuo)
+
+	Does the front end things. Will utilize Jquery Mobile and responsive frameworks. Aka. Front End
 
 ##Tools
 TBD
@@ -12,6 +16,10 @@ TBD
 ##Log
 ### Week 1
 Simon
-- TBD
+- Got GPS working
+
+Current Doing
+- Leaving a question pertaining to phoneGap not detecting the compass API in the phoneGap community.
+
 Haoxin
 - TBD
