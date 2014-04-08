@@ -20,8 +20,8 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-	navigator.geolocation.getCurrentPosition(getLoc,null);
-	navigator.compass.getCurrentHeading(getHeading,null);
+//	navigator.geolocation.getCurrentPosition(getLoc,null);
+	//navigator.compass.getCurrentHeading(getHeading,null);
     },
     // Bind Event Listeners
     //
@@ -61,3 +61,13 @@ function getLoc(position){
 function getHeading(heading){
     document.getElementById('heading').innerHTML = heading.getmagneticHeading;
 }
+
+$('#getGPs','#getHeading').click(function(){
+    if(this.id == 'getGPS'){
+	alert('Getting Geolocation');
+	navigator.geolocation.getCurrentPosition(getLoc,null);
+    }
+    else if(this.id == 'getHeading'){
+       alert('Getting Heading');
+   } 
+});

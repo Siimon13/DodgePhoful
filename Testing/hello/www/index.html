@@ -33,13 +33,20 @@
             <div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
                 <p class="event received">Device is Ready</p>
+		
+            </div>
+	    <div>
+	      <center>
+		<h2>Stats</h2>
+		<input type="submit" onclick="getLoc()" id="getGPS" value="Get Geolocation"><br>
 		Latitude: <span id="latitude">..</span> <br>
 		Longitude: <span id="longitude">..</span><br>
+		<input type="submit" id="getHeading" value="Get Heading"><br>
 		Heading: <span id="heading">..</span>
-            </div>
+	      </center>
+	    </div>
         </div>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script type="text/javascript" src="phonegap.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();

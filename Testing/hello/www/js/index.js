@@ -20,8 +20,8 @@ var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
-	navigator.geolocation.getCurrentPosition(getLoc,null);
-	navigator.compass.getCurrentHeading(getHeading,null);
+//	navigator.geolocation.getCurrentPosition(getLoc,null);
+	//navigator.compass.getCurrentHeading(getHeading,null);
     },
     // Bind Event Listeners
     //
@@ -51,13 +51,16 @@ var app = {
 };
 
     
-function getLoc(position){
+function getLoc(){
     console.log("updating")
-    document.getElementById('latitude').innerHTML = position.coords.latitude;
-    document.getElementById('longitude').innerHTML = position.coords.longitude;
-    
+    navigator.geolocation.getCurrentPosition(function(position){
+	document.getElementById('latitude').innerHTML = position.coords.latitude;
+	document.getElementById('longitude').innerHTML = position.coords.longitude;
+    }
+					     ,null);
 }
 
 function getHeading(heading){
     document.getElementById('heading').innerHTML = heading.getmagneticHeading;
 }
+
