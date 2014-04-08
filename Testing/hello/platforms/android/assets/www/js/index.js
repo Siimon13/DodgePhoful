@@ -51,23 +51,16 @@ var app = {
 };
 
     
-function getLoc(position){
+function getLoc(){
     console.log("updating")
-    document.getElementById('latitude').innerHTML = position.coords.latitude;
-    document.getElementById('longitude').innerHTML = position.coords.longitude;
-    
+    navigator.geolocation.getCurrentPosition(function(position){
+	document.getElementById('latitude').innerHTML = position.coords.latitude;
+	document.getElementById('longitude').innerHTML = position.coords.longitude;
+    }
+					     ,null);
 }
 
 function getHeading(heading){
     document.getElementById('heading').innerHTML = heading.getmagneticHeading;
 }
 
-$('#getGPs','#getHeading').click(function(){
-    if(this.id == 'getGPS'){
-	alert('Getting Geolocation');
-	navigator.geolocation.getCurrentPosition(getLoc,null);
-    }
-    else if(this.id == 'getHeading'){
-       alert('Getting Heading');
-   } 
-});
