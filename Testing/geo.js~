@@ -1,0 +1,8 @@
+var watchID = null;
+$(document).ready(function(){
+    var optn = {
+	enableHighAccuracy: true,
+	timeout: Infinity,
+	maximumAge: 0
+    };
+}
