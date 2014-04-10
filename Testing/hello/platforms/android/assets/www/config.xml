@@ -23,6 +23,7 @@
     <!--Compass -->
     <feature name="Compass">
       <param name="android-package" value="org.apache.cordova.CompassListener" />
+      <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
     </feature>
     <feature name="App">
       <param name="android-package" value="org.apache.cordova.App" />
@@ -61,7 +62,7 @@
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
-    <gap:plugin name="org.apache.cordova.device-orientation"/>
+    <gap:plugin name="org.apache.cordova.device-orientation" version="0.35"/>
     
     <!-- Define app icon for each platform. -->
     <icon src="icon.png" />

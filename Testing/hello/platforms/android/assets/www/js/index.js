@@ -46,7 +46,8 @@ function getLoc(){
 
 function getHeading(){
     navigator.compass.getCurrentHeading(function(heading){
-	document.getElementById('heading').innerHTML = heading.getmagneticHeading;
+	//document.getElementById('heading').innerHTML = heading.getmagneticHeading;
+	alert(heading.magneticHeading);
     },function(error){
 	alert( error.code);
     });
