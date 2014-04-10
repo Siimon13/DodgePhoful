@@ -11,9 +11,12 @@ TBD
 
 ##Log
 ### Week 1
-
 Simon
 - Created phonegap Hello word webapp
 
 Haoxin
 - TBD
+
+##Pending Designs
+
+[Click here](https://docs.google.com/document/d/1KSMnX5XJSAW1Ouq5qBg-PLTEmEFivnqn2JtZCnOStsQ/edit?usp=sharing)
