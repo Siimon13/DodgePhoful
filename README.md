@@ -4,15 +4,29 @@ A dodgeball like augmented reality game using geolocation and accelerometer data
 
 ##The Team
 - [Siimon](https://github.com/Siimon13)
+
+	Does the gps/server things. Will make the game engine and get the app working. Aka. Back End
 - [Haoxin](https://github.com/HaoxinLuo)
+
+	Does the front end things. Will utilize Jquery Mobile and responsive frameworks. Aka. Front End
 
 ##Tools
 TBD
 
 ##Log
-### Week 1
+### Week 1-Week 2
 Simon
-- Created phonegap Hello word webapp
+- Got GPS working
+- Got accelerometer working
+- Got compass working
+ 
+
+Current Doing
+- Working on True heading and Dodegeball object
+
+Plans
+- Get everything working and start working on the server and multiplayer aspect.
+
 
 Haoxin
 - TBD
