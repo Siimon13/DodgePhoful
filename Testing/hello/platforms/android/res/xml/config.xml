@@ -1,9 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <feature name="App">
-        <param name="android-package" value="org.apache.cordova.App" />
-    </feature>
     <name>DodgePhoful</name>
     <description>
         DodgePhoful is an app that allows users to players to play virtual dodge ball with each other users of the app. The user also has the option to set traps. Utilizes the compass and accelerometer to stimulate the throwing of a dodge ball. For collision with the dodgeball, we used the players GPS location.
@@ -11,7 +8,16 @@
     <author email="chen.simon89@gmail.com" href="http://phonegap.com">
         Team HaoSim 
     </author>
-    <feature name="http://api.phonegap.com/1.0/device" />
+    <feature name="Compass">
+        <param name="android-package" value="org.apache.cordova.deviceorientation.CompassListener" />
+        <param name="android-package" value="org.apache.cordova.CompassListener" />
+    </feature>
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+    <feature name="Accelerometer">
+        <param name="android-package" value="org.apache.cordova.devicemotion.AccelListener" />
+    </feature>
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
@@ -26,11 +32,12 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
     <icon src="icon.png" />
-    <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36-ldpi.png" />
-    <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon-48-mdpi.png" />
-    <icon gap:density="hdpi" gap:platform="android" src="res/icon/android/icon-72-hdpi.png" />
-    <icon gap:density="xhdpi" gap:platform="android" src="res/icon/android/icon-96-xhdpi.png" />
+    <icon gap:density="ldpi" gap:platform="android" src="res/icon/android/icon-36.png" />
+    <icon gap:density="mdpi" gap:platform="android" src="res/icon/android/icon-48.png" />
+    <icon gap:density="hdpi" gap:platform="android" src="res/icon/android/icon-72.png" />
+    <icon gap:density="xhdpi" gap:platform="android" src="res/icon/android/icon-96.png" />
     <icon gap:platform="blackberry" src="res/icon/blackberry/icon-80.png" />
     <icon gap:platform="blackberry" gap:state="hover" src="res/icon/blackberry/icon-80.png" />
     <icon gap:platform="ios" height="57" src="res/icon/ios/icon-57.png" width="57" />

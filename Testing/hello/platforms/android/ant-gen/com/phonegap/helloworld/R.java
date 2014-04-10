@@ -18,6 +18,5 @@ public final class R {
     }
     public static final class xml {
         public static final int config=0x7f030000;
-        public static final int plugins=0x7f030001;
     }
 }

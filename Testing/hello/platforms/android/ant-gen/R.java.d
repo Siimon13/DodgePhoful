@@ -5,7 +5,6 @@
 /home/simon/DodgePhoful/Testing/hello/platforms/android/res/drawable-hdpi/icon.png \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/res/drawable-xhdpi/icon.png \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/res/drawable-mdpi/icon.png \
-/home/simon/DodgePhoful/Testing/hello/platforms/android/res/xml/plugins.xml \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/res/xml/config.xml \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/ant-build/res/drawable/icon.png \
 /home/simon/DodgePhoful/Testing/hello/platforms/android/ant-build/res/drawable-ldpi/icon.png \
