@@ -1,3 +1,4 @@
+var watchID = null;
 
 var app = {
     // Application Constructor
@@ -12,6 +13,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+	document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
@@ -19,6 +21,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+	startWatch();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -33,7 +36,17 @@ var app = {
     }
 };
 
-    
+function startWatch(){
+    var optns = { frequency : 500};
+    watchID = navigator.accelerometer.watchAcceleration(watchSuccess, onError, optns);
+}
+
+function watchSuccess(acceleration){
+	document.getElementById('accx').innerHTML = acceleration.x;
+	document.getElementById('accy').innerHTML = acceleration.y;
+    	document.getElementById('accz').innerHTML = acceleration.z;
+}
+
 function getLoc(){
     console.log("updating")
     navigator.geolocation.getCurrentPosition(function(position){
