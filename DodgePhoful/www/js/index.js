@@ -1,5 +1,14 @@
+//=======Globals====================================================
 var watchID = null;
+var motionArray = [];
+var counter = 0;
 
+//====Dodgeball constructor=========================================
+function dodgeball(heading, deltaX, deltaY, deltaZ){
+    this.heading = heading;
+}
+
+//=======app========================================================
 var app = {
     // Application Constructor
     initialize: function() {
@@ -13,7 +22,6 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-	document.addEventListener('deviceready', this.onDeviceReady, false);
     },
     // deviceready Event Handler
     //
@@ -42,9 +50,32 @@ function startWatch(){
 }
 
 function watchSuccess(acceleration){
-	document.getElementById('accx').innerHTML = acceleration.x;
-	document.getElementById('accy').innerHTML = acceleration.y;
-    	document.getElementById('accz').innerHTML = acceleration.z;
+    document.getElementById('accx').innerHTML = acceleration.x;
+    document.getElementById('accy').innerHTML = acceleration.y;
+    document.getElementById('accz').innerHTML = acceleration.z;
+    motionArray.push(acceleration.x);
+    motionArray.push(acceleration.y);
+    motionArray.push(acceleration.z);
+    counter = counter + 1;
+    if(counter%2 == 0){
+	motionDetector();
+    }
+}
+
+function motionDetector(){
+    z = motionArray.pop();
+    y = motionArray.pop();
+    x = motionArray.pop();
+    z1 = motionArray.pop();
+    y1 = motionArray.pop();
+    x1 = motionArray.pop();
+    if(z1 - z >= 3 ||
+       x1 - x >= 3 ||
+       y1 - y >= 3){
+	alert("You threw a ball");
+    }else{
+	alert("You did nothing")
+    }
 }
 
 function getLoc(){
@@ -79,5 +110,5 @@ function onError() {
 
 function getForce(){
     navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
-
 }
+
