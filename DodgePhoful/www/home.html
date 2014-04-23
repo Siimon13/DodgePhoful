@@ -8,22 +8,23 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="icon" type="image/png" href="Dodgelogo.png" />
         <title>Welcome to DodgePhoful</title>
-	<h1>Dodgephoful</h1>
     </head>
     <body>
-        <div class="app">
-            <h1>DodgePhoful</h1>
-            <div id="stats">
-              <center>
-                <input type="submit" onclick="rd('./register.html')" id="regi" value="Register Now!!!">
-              </center>
-            </div>
+      <div>
+        <h1>DodgePhoful</h1>
+        <div>
+          <center>
+	    <img src="img/ball.png" height="60%" width="60%" name="toLogin" onclick="rd('login')"><br>
+            <button type="button" onclick="rd('register')" id="regi">Register Now!!!</button>
+	    <br><br><br>
+            <button type="button" onclick="rd('index')" id="back">Back</button>
+          </center>
         </div>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+      </div>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+      <script type="text/javascript" src="js/index.js"></script>
+      <script type="text/javascript">
+        app.initialize();
+      </script>
     </body>
 </html>
