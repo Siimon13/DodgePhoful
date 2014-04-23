@@ -14,12 +14,23 @@ A dodgeball like augmented reality game using geolocation and accelerometer data
 TBD
 
 ##Log
-### Week 1
+### Week 1-Week 2
 Simon
 - Got GPS working
+- Got accelerometer working
+- Got compass working
+ 
 
 Current Doing
-- Leaving a question pertaining to phoneGap not detecting the compass API in the phoneGap community.
+- Working on True heading and Dodegeball object
+
+Plans
+- Get everything working and start working on the server and multiplayer aspect.
+
 
 Haoxin
 - TBD
+
+##Pending Designs
+
+[Click here](https://docs.google.com/document/d/1KSMnX5XJSAW1Ouq5qBg-PLTEmEFivnqn2JtZCnOStsQ/edit?usp=sharing)

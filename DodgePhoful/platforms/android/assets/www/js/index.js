@@ -125,7 +125,7 @@ function getForce(){
 function go(){
     var dbinfo = "";
     for (var i = 0; i < dodgeBallArray.length;i++){
-    	dbinfo+="dodgeBallNumber " + i + "<br>" +
+    	dbinfo+= "<br>" + "dodgeBallNumber " + i + "<br>" +
     	    "Heading: " + dodgeBallArray[i].heading + "<br>" +
     	    "Latitude: " + dodgeBallArray[i].lat + "<br>" +
     	    "Longitude: " + dodgeBallArray[i].longit + "<br>"
