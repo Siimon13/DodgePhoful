@@ -6,10 +6,11 @@ var counter = 0;
 var currentHeading,lat,longit;
 
 //====Dodgeball constructor=========================================
-function dodgeball(heading, deltaX, deltaY, deltaZ, lat, longit){
+function Dodgeball(heading, deltaX, deltaY, deltaZ, lat, longit){
     this.heading = heading;
     this.lat = lat;
     this.longit = longit;
+    alert("Made new Dodgeball");
 }
 
 //=======app========================================================
@@ -122,7 +123,14 @@ function getForce(){
 }
 
 function go(){
-    for (db in dodgeBallArray){
-	
+    var dbinfo = "";
+    for (var i = 0; i < dodgeBallArray.length;i++){
+    	dbinfo+= "<br>" + "dodgeBallNumber " + i + "<br>" +
+    	    "Heading: " + dodgeBallArray[i].heading + "<br>" +
+    	    "Latitude: " + dodgeBallArray[i].lat + "<br>" +
+    	    "Longitude: " + dodgeBallArray[i].longit + "<br>"
     }
+    
+    document.getElementById('dodgeballs').innerHTML = dbinfo;
+    setTimeout(go,300);
 }

@@ -6,10 +6,11 @@ var counter = 0;
 var currentHeading,lat,longit;
 
 //====Dodgeball constructor=========================================
-function dodgeball(heading, deltaX, deltaY, deltaZ, lat, longit){
+function Dodgeball(heading, deltaX, deltaY, deltaZ, lat, longit){
     this.heading = heading;
     this.lat = lat;
     this.longit = longit;
+    alert("Made new Dodgeball");
 }
 
 //=======app========================================================
@@ -34,6 +35,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 	startWatch();
+	go();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -120,3 +122,15 @@ function getForce(){
     navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
 }
 
+function go(){
+    var dbinfo = "";
+    for (var i = 0; i < dodgeBallArray.length;i++){
+    	dbinfo+="dodgeBallNumber " + i + "<br>" +
+    	    "Heading: " + dodgeBallArray[i].heading + "<br>" +
+    	    "Latitude: " + dodgeBallArray[i].lat + "<br>" +
+    	    "Longitude: " + dodgeBallArray[i].longit + "<br>"
+    }
+    
+    document.getElementById('dodgeballs').innerHTML = dbinfo;
+    setTimeout(go,300);
+}
