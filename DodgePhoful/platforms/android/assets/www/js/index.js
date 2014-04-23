@@ -1,11 +1,15 @@
 //=======Globals====================================================
 var watchID = null;
 var motionArray = [];
+var dodgeBallArray = [];
 var counter = 0;
+var currentHeading,lat,longit;
 
 //====Dodgeball constructor=========================================
-function dodgeball(heading, deltaX, deltaY, deltaZ){
+function dodgeball(heading, deltaX, deltaY, deltaZ, lat, longit){
     this.heading = heading;
+    this.lat = lat;
+    this.longit = longit;
 }
 
 //=======app========================================================
@@ -56,7 +60,7 @@ function watchSuccess(acceleration){
     motionArray.push(acceleration.x);
     motionArray.push(acceleration.y);
     motionArray.push(acceleration.z);
-    counter = counter + 1;
+    counter++;
     if(counter%2 == 0){
 	motionDetector();
     }
@@ -73,8 +77,9 @@ function motionDetector(){
        x1 - x >= 3 ||
        y1 - y >= 3){
 	alert("You threw a ball");
-    }else{
-	alert("You did nothing")
+	dodgeBallArray.push(new Dodgeball(currentHeading,
+				     x1-x, y1-y,z1-z,
+				      lat, longit));
     }
 }
 
@@ -82,7 +87,9 @@ function getLoc(){
     console.log("updating")
     navigator.geolocation.getCurrentPosition(function(position){
 	document.getElementById('latitude').innerHTML = position.coords.latitude;
+	lat = position.coords.latitude;
 	document.getElementById('longitude').innerHTML = position.coords.longitude;
+	longit = position.coords.longitude;
     }
 					     ,null,
 					    {enableHighAccuracy: true });
@@ -92,6 +99,7 @@ function getHeading(){
     navigator.compass.getCurrentHeading(function(heading){
 	//document.getElementById('heading').innerHTML = heading.getmagneticHeading;
 	alert(heading.trueHeading);
+	currentHeading = heading.trueHeading;
     },function(error){
 	alert( error.code);
     });
