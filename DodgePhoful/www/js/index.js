@@ -74,7 +74,6 @@ function startWatch(){
     var optns = { frequency : 500};
     watchID = navigator.accelerometer.watchAcceleration(watchSuccess, onError, optns);
 }
-
 function watchSuccess(acceleration){
     document.getElementById('accx').innerHTML = acceleration.x;
     document.getElementById('accy').innerHTML = acceleration.y;
@@ -95,9 +94,9 @@ function motionDetector(){
     z1 = motionArray.pop();
     y1 = motionArray.pop();
     x1 = motionArray.pop();
-    if(z1 - z >= 3 ||
-       x1 - x >= 3 ||
-       y1 - y >= 3){
+    if(abs(z1-z) >= 4 ||
+       abs(x1-x) >= 4 ||
+       abs(y1-y) >= 4){
 	alert("You threw a ball");
 	dodgeBallArray.push(new Dodgeball(currentHeading,
 				     x1-x, y1-y,z1-z,

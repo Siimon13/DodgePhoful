@@ -1,3 +1,23 @@
+//=======tmp=========================================================
+function rd(pg){
+    dest = pg + ".html";
+    window.location.href = dest;
+}
+
+function fireDB(){
+    //fires dodgeball
+    var val = parseInt(document.getElementById('nfired').innerHTML);
+    document.getElementById('nfired').innerHTML = val + 1;
+    return false;
+}
+
+function setTrap(n){
+    var trap = "ntrap"+n;
+    var val = parseInt(document.getElementById(trap).innerHTML);
+    document.getElementById(trap).innerHTML = val + 1;
+    return false;
+}
+
 //=======Globals====================================================
 var watchID = null;
 var motionArray = [];
@@ -75,9 +95,9 @@ function motionDetector(){
     z1 = motionArray.pop();
     y1 = motionArray.pop();
     x1 = motionArray.pop();
-    if(z1 - z >= 3 ||
-       x1 - x >= 3 ||
-       y1 - y >= 3){
+    if(abs(z1-z) >= 4 ||
+       abs(x1-x) >= 4 ||
+       abs(y1-y) >= 4){
 	alert("You threw a ball");
 	dodgeBallArray.push(new Dodgeball(currentHeading,
 				     x1-x, y1-y,z1-z,
