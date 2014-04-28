@@ -1,0 +1,125 @@
+@font-face{
+    font-family:Goudy Stout;
+    src: url(goudysto.ttf);
+}
+
+body{
+    -webkit-touch-callout: none;        
+    -webkit-text-size-adjust: none;            
+    -webkit-user-select: none;     
+    background:url(../img/bkgrd.png) no-repeat center top;
+    position:absolute;
+    margin:0px;
+    padding:0px;
+    height:100%;
+    width:100%;
+    font-family:Goudy Stout;
+    color:#6D0305; /*
+    color:#2E0303;*/
+    text-shadow:#8A8A8A 0.1em 0.1em .5em;
+}
+
+/****************************Home.html***********************************************/
+
+.title{
+    position:absolute;
+    top:5%;
+}
+
+.login{
+    position:absolute;
+    top:20%;
+}
+
+.regi{
+    position:absolute;
+    bottom:10%;
+    left:5%
+}
+
+/*************************Game.html*****************************************************/
+
+.fire{
+    position:absolute;
+    left:15%;
+    top:55%;
+    font-size:15px;
+    text-align:center;
+}
+
+.traps{
+    position:absolute;
+    top:80%;
+    margin:0px;
+    padding:0px;
+    font-size:10px;
+}
+
+/*********************************Join.html********************************************/
+.lobby{
+    list-style-type: none;
+    padding:1;
+    margin-left: 10px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-style: solid;
+    border-color:#8A8A8A;
+    border-radius: 12px;
+    -moz-border-radius:12px;
+    -webkit-border-radius:12px;
+    font-size:10px;
+    color:#2E0303;
+}
+
+
+.lobby li:nth-child(even){
+    background:#a4401e;
+}
+
+.lobby li:nth-child(odd){
+    background:#ce876f;
+}
+
+.lobby li:last-child{
+    border-bottom-right-radius: 12px;
+    -moz-border-radius-bottomright:12px;
+    -webkit-border-radius-bottomright:12px;
+    border-bottom-left-radius: 12px;
+    -moz-border-radius-bottomleft:12px;
+    -webkit-border-radius-bottomleft:12px;
+}
+
+.lobby li:first-child{
+    border-top-right-radius: 12px;
+    -moz-border-radius-topright:12px;
+    -webkit-border-radius-topright:12px;
+    border-top-left-radius: 12px;
+    -moz-border-radius-topleft:12px;
+    -webkit-border-radius-topleft:12px;
+}
+
+/******************************Login.html***********************************************/
+
+.signin{
+    border-radius: 12px;
+    -moz-border-radius:12px;
+    -webkit-border-radius:12px;
+    border-style:solid;
+    border-color:#8a8a8a;
+    width:60%;
+    height:40%;
+    padding-left:0px;
+}
+
+/*******************************Register.html*******************************************/
+.signup{
+    border-radius: 12px;
+    -moz-border-radius:12px;
+    -webkit-border-radius:12px;
+    border-style:solid;
+    border-color:#8a8a8a;
+    width:60%;
+    height:40%;
+    padding-left:0px;
+}
