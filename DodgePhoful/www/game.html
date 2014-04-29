@@ -12,29 +12,41 @@
     <center>
       <h1>Go Get'em</h1>       
     </center>
+    <div class="app">
+      <div id="deviceready" class="blink">
+	<!--
+	<p class="event listening">Connecting to Device</p>
+	<p class="event received">Device is Ready</p>
+	-->
+	<p class="event listening"></p>
+	<p class="event received"></p>
+      </div>
+      <svg id="radar" width="300" height="300" viewbox="0 0 300 300">
+	<circle r="150" cx="150" cy="150" fill="green" />
+      </svg>
+      <p id="gps">... </p>
+      <p id="compass">... </p>
+    </div>
+    
     <div class="fire">
-      <img src="./img/fire.png" height="40%" width="40%"  onclick="fireDB()" /><br>
-      Fired <span id="nfired">0</span> Dodgeballs
+      <img src="./img/fire.png" height="40%" width="40%"  class="shoot" /><br>
+      <span id="nfired">...</span>
     </div>
     <div class="traps">
       <center>
-      <img src="./img/trap01.png" height="20%" width="20%" onclick="setTrap('1')" />
-      <img class="a" src="./img/trap02.png" height="20%" width="20%" onclick="setTrap('2')" />
-      <img class="b" src="./img/trap03.png" height="20%" width="20%" onclick="setTrap('3')" /><br>
-      
-      <span id="ntrap1">0</span> Traps 
-      <span class="a" id="ntrap2">0</span> Traps 
-      <span class="b" id="ntrap3">0</span> Traps
-
-      <br><button name="rindex" onclick="rd('index')" type="button">End Game</button>	  
-
+	<img src="./img/dodgeball.jpg" height="20%" width="20%" onclick="weap('0')" />
+	<img src="./img/trap01.png" height="20%" width="20%" onclick="weap('1')" />
+	<img src="./img/trap02.png" height="20%" width="20%" onclick="weap('2')" />
+	<img src="./img/trap03.png" height="20%" width="20%" onclick="weap('3')" />
+	<br><button name="rindex" onclick="rd('index')" type="button">End Game</button>	  
+	
       </center>
     </div>
       
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/radar.js"></script>
     <script type="text/javascript" src="phonegap.js"></script>
-    <script type="text/javascript">
-    </script>
+    <script type="text/javascript">app.initialize();</script>
   </body>
 </html>

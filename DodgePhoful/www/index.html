@@ -5,44 +5,31 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-	<link rel="icon" type="image/png" href="Dodgelogo.png" />
-        <title>DodgePhoful Test Page</title>
+        <link rel="stylesheet" type="text/css" href="css/phone.css" />
+        <link rel="icon" type="image/png" href="Dodgelogo.png" />
     </head>
     <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-		
-            </div>
-	    <div id="stats">
-	      <center>
-		<h2>Stats</h2>
-		<input type="submit" onclick="getLoc()" id="getGPS" value="Get Geolocation"><br>
-		Latitude: <span id="latitude">..</span> <br>
-		Longitude: <span id="longitude">..</span><br>
-		<input type="submit" onclick="getHeading()" id="getHeading" value="Get Heading"><br>
-		Heading: <span id="heading">..</span><br>
-		Acceleration X: <span id="accx">..</span><br>
-		Acceleration Y: <span id="accy">..</span><br>
-		Acceleration Z: <span id="accz">..</span><br>
-		<input type="submit" onclick="getForce()" id="getHeading" value="Get Force"><br>
-		<button type="button" name="game" onclick="rd('game')">Game Room</button>
-		<button type="button" name="game" onclick="rd('home')">Home Page</button>
-		<button type="button" name="game" onclick="rd('join')">Game Lobby</button>
-		<button type="button" name="test" onclick="rd('radar')">Radar</button>
-		<h2 >DodgeBalls</h2>
-		<span id= "dodgeballs">..</span>
-	      </center>
-	    </div>
-        </div>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-	</script>
+      <div>
+        <center>
+	  <div class="title">
+	    <img src="img/title.png" width="80%" height="80%">
+	  </div>
+	  <div class="login">
+	    <img src="img/login.png" onclick="rd('login')" width="100%" height="100%">
+	  </div>
+	  <div class="regi">
+          <img src="img/regi.png" width="80%" height="80%" onclick="rd('register')">	   
+	  </div>
+          <button type="button" onclick="rd('game')" >Start Game</button>
+          <button type="button" onclick="rd('join')" >Lobby</button>
+        </center>
+      </div>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+      <script type="text/javascript" src="js/index.js"></script>
+      <script type="text/javascript" src="phonegap.js"></script>
+      <script type="text/javascript">
+        app.initialize();
+      </script>
     </body>
+    <br><br>
 </html>
