@@ -26,12 +26,12 @@
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/#index.html# \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/register.html \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/cordova_plugins.js \
-/home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/home.html \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/login.html \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/js \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/cordova.js \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/index.html \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/config.xml \
+/home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/retired-index.html \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/radar.html \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/phonegap.js \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/plugins/org.apache.cordova.device-motion \
@@ -111,6 +111,7 @@
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/img/fire.png \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/img/bkgrd.png \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/img/trap01.png \
+/home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/img/dodgeball.jpg \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/img/trap02.png \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/img/regi.png \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/img/trap03.png \

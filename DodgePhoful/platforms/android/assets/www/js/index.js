@@ -4,20 +4,39 @@ function rd(pg){
     window.location.href = dest;
 }
 
-function fireDB(){
-    //fires dodgeball
-    var val = parseInt(document.getElementById('nfired').innerHTML);
-    document.getElementById('nfired').innerHTML = (val + 1);
-    return false;
+function weapon(){
+    var fired = [0,0,0,0];
+    var lines = [" balls thrown."," trap1 set."," trap2 set."," trap3 set."];
+    var selected = "nothing";
+    var select = function(n){
+	var num = parseInt(n);
+	selected = num;
+	document.getElementById("nfired").innerHTML = fired[num] + lines[num];
+	return false;
+    }
+    var fire = function(e){
+	var num = selected;
+	switch(num){
+	case "nothing": return false;
+	case 0: counter++; break;         //can add cases in future for traps and stuff
+	default: break;
+	}	
+	if (e.type === "mouseup"){
+	    fired[num]++;
+	    select(num);
+	}
+	return false;
+    }
+    return [select,fire];
 }
 
-function setTrap(n){
-    var trap = "ntrap"+n;
-    var val = parseInt(document.getElementById(trap).innerHTML);
-    document.getElementById(trap).innerHTML = (val + 1);
-    return false;
-}
+var RANDOMSTRINGNAME = weapon();
+var weap = RANDOMSTRINGNAME[0];
+var fireWeap = RANDOMSTRINGNAME[1];
 
+var ele = document.getElementsByClassName("shoot");
+ele[0].addEventListener("mouseup",fireWeap);
+ele[0].addEventListener("mousedown",fireWeap);
 
 //=======Globals====================================================
 var watchID = null;
@@ -56,7 +75,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 	startWatch();
-	go();
+//	go();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -77,6 +96,17 @@ function startWatch(){
 }
 
 function watchSuccess(acceleration){
+    if (counter > 1){
+	motionArray.push(acceleration.x);
+	motionArray.push(acceleration.y);
+	motionArray.push(acceleration.z);
+	counter--;
+	if (motionArray.length==6){
+	    motionDetector();
+	}
+    }
+
+    /*
     document.getElementById('accx').innerHTML = acceleration.x;
     document.getElementById('accy').innerHTML = acceleration.y;
     document.getElementById('accz').innerHTML = acceleration.z;
@@ -87,6 +117,7 @@ function watchSuccess(acceleration){
     if(counter%2 == 0){
 	motionDetector();
     }
+    */
 }
 
 function motionDetector(){
