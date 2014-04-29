@@ -23,6 +23,7 @@
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/icon.png \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/Dodgelogo.png \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/css \
+/home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/#index.html# \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/register.html \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/cordova_plugins.js \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/home.html \
@@ -126,4 +127,5 @@
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/css/index.css \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/js/index.js \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/js/radar.js \
+/home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/js/#index.js# \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/ant-build/AndroidManifest.xml \

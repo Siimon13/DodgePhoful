@@ -28,6 +28,7 @@ var app = {
 	addGraph();
 	startGPS();
 	startCompass();
+	animate();
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -80,8 +81,8 @@ function CompassError(error){
 }
 
 function addGraph(){
+    angle = 0;
     var s = document.getElementById('radar');
-    alert(s);
     var l = document.createElementNS("http://www.w3.org/2000/svg","line");
     l.setAttribute('x1',150);
     l.setAttribute('y1',150);
@@ -89,5 +90,13 @@ function addGraph(){
     l.setAttribute('y2',300);
     l.setAttribute('stroke',"#00FF00");
     l.setAttribute("stroke-width", 2);
+    l.setAttribute('id', 'line');
     s.appendChild(l);
+}
+
+function animate(){
+    var l = document.getElementById('line');
+    var a = (angle+=10)%360;
+    l.setAttribute("transform", "rotate(" + a + " 150 150)");
+    setTimeout(animate,100);
 }

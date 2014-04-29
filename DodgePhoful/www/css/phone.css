@@ -39,6 +39,24 @@ body{
 
 /*************************Game.html*****************************************************/
 
+/*
+.app {
+    position:absolute;             
+    height:20%;
+    width:20%;
+    left:50%;
+    top:50%;  
+    text-align:center;
+}
+*/
+
+svg{
+    position:relative;
+    left:17.5%; 
+    height:65%;
+    width:65%;
+}
+
 .fire{
     position:absolute;
     left:15%;
