@@ -51,6 +51,7 @@ var fireWeap = RANDOMSTRINGNAME[1];
 var ele = document.getElementsByClassName("shoot");
 ele[0].addEventListener("touchstart",fireWeap);
 ele[0].addEventListener("touchcancel",fireWeap);
+ele[0].addEventListener("touchend",fireWeap);
 
 
 //====Dodgeball constructor=========================================
