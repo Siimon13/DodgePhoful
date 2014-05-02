@@ -128,5 +128,5 @@
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/css/index.css \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/js/index.js \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/js/radar.js \
-/home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/js/#index.js# \
+/home/simon/DodgePhoful/DodgePhoful/platforms/android/assets/www/js/d3.min.js \
 /home/simon/DodgePhoful/DodgePhoful/platforms/android/ant-build/AndroidManifest.xml \
