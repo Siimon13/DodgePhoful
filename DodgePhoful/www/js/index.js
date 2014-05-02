@@ -49,6 +49,8 @@ var weap = RANDOMSTRINGNAME[0];
 var fireWeap = RANDOMSTRINGNAME[1];
 
 var ele = document.getElementsByClassName("shoot");
+
+//The reason I added touchstart/cancel/end is because if the button is let go without the touchend, the button will just break. It's to catch the "error," which is touchend.
 ele[0].addEventListener("touchstart",fireWeap);
 ele[0].addEventListener("touchcancel",fireWeap);
 ele[0].addEventListener("touchend",fireWeap);
