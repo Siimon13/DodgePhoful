@@ -138,14 +138,14 @@ function motionDetector(){
     z1 = motionArray.pop();
     y1 = motionArray.pop();
     x1 = motionArray.pop();
-   // if(z1 - z >= 3 ||
-    //   x1 - x >= 3 ||
-    //   y1 - y >= 3){
-    //	alert("You threw a ball");
+   if(z1 - z >= 3 ||
+       x1 - x >= 3 ||
+       y1 - y >= 3){
+    	alert("You threw a ball");
 	dodgeBallArray.push(new Dodgeball(currentHeading,
 					  y1-y,z1-z,
 					  lat, longit));
-    //}
+    }
 }
 
 function getLoc(){
