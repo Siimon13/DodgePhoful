@@ -185,15 +185,21 @@ function getForce(){
     navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
 }
 
+
+//Animates the ball
 function go(){
-    var dbinfo = "";
-    for (var i = 0; i < dodgeBallArray.length;i++){
-    	dbinfo+= "<br>" + "dodgeBallNumber " + i + "<br>" +
-    	    "Heading: " + dodgeBallArray[i].heading + "<br>" +
-    	    "Latitude: " + dodgeBallArray[i].lat + "<br>" +
-    	    "Longitude: " + dodgeBallArray[i].longit + "<br>"
-    }
+    // var dbinfo = "";
+    // for (var i = 0; i < dodgeBallArray.length;i++){
+    // 	dbinfo+= "<br>" + "dodgeBallNumber " + i + "<br>" +
+    // 	    "Heading: " + dodgeBallArray[i].heading + "<br>" +
+    // 	    "Latitude: " + dodgeBallArray[i].lat + "<br>" +
+    // 	    "Longitude: " + dodgeBallArray[i].longit + "<br>"
+    // }
     
-    document.getElementById('dodgeballs').innerHTML = dbinfo;
-    setTimeout(go,300);
+    // document.getElementById('dodgeballs').innerHTML = dbinfo;
+    // setTimeout(go,300);
+    for(var i = 0; i < dodgeBallArray.length;i++){
+	var dl = dodgeballArray[i].lat
+	var dlong = dodgeBallArray[i].longit;
+    }
 }
