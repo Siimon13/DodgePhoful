@@ -199,7 +199,37 @@ function go(){
     // document.getElementById('dodgeballs').innerHTML = dbinfo;
     // setTimeout(go,300);
     for(var i = 0; i < dodgeBallArray.length;i++){
-	var dl = dodgeballArray[i].lat
-	var dlong = dodgeBallArray[i].longit;
+	var acc = dodgeBallArray[i].deltaZ/10;
+	var height = dodgeBallArray[i].deltaY/10;
+	var heading = parseFloat(dodgeBallArray[i].heading);
+	var constant = .0000028 * dodgeBallArray[i].deltaZ;
+	dodgeBallArray[i].deltaY/10 += -.918;
+	//Update Dodgeball
+	if(heading == 0 ){
+	    dodgeBallArray[i].longit += constant;
+	}else if(0 < heading < 90){
+	    dodgeBallArray[i].lat += constant;
+	    dodgeBallArray[i].longit += constant;
+	}else if(heading == 90){
+	    dodgeBallArray[i].lat += constant;
+	}else if (90 < heading < 180){
+	    dodgeBallArray[i].lat += constant;
+	    dodgeBallArray[i].longit -= constant;
+	}else if(heading = 180){
+	    dodgeBallArray[i].longit -= constant;
+	}else if(180 < heading < 270){
+	    dodgeBallArray[i].lat -= constant;
+	    dodgeBallArray[i].longit -= constant;
+	}else if(heading == 270){
+	    dodgeBallArray[i].lat -= constant;
+	}else if(270 < heading < 360){
+	    dodgeBallArray[i].lat -= constant;
+	    dodgeBallArray[i].longit += constant;
+	}
+	//Removes the Dodgeball
+	if(dodgeBallArray[i].deltaY/10 <= 0){
+	    dodgeBallArray.splice(i,1);
+	}
     }
+
 }
