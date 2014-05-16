@@ -98,5 +98,11 @@ function animate(){
     var l = document.getElementById('line');
     var a = (angle+=10)%360;
     l.setAttribute("transform", "rotate(" + a + " 150 150)");
+    if(angle >= 360){
+	angle = 0;
+    }
+    /*Enter Player Encounter code here*/
+    var g = document.getElementById('graph');
+    g.setAttribute("transfor","rotate("+heading+" 150 150)");
     setTimeout(animate,100);
 }

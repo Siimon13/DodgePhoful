@@ -24,12 +24,15 @@
       <svg id="radar" width="300" height="300" viewbox="0 0 300 300">
 	<circle r="150" cx="150" cy="150" fill="green" />
       </svg>
-      <p id="gps">... </p>
-      <p id="compass">... </p>
+      <!-- <p id="gps">... </p>  -->     
+      <!-- <p id="compass">... </p>  -->  
     </div>
     
     <div class="fire">
-      <img src="./img/fire.png" height="40%" width="40%"  class="shoot" /><br>
+      <button class="shoot">
+	<img src="./img/fire.png" height="40%" width="40%" />
+      </button>
+      <br>
       <span id="nfired">...</span>
     </div>
     <div class="traps">
@@ -42,8 +45,8 @@
 	
       </center>
     </div>
-      
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/radar.js"></script>
     <script type="text/javascript" src="phonegap.js"></script>

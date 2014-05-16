@@ -1,3 +1,10 @@
+//=======Globals====================================================
+var watchID = null;
+var motionArray = [];
+var dodgeBallArray = [];
+var counter = 0;
+var currentHeading,lat,longit;
+
 //=======tmp=========================================================
 function rd(pg){
     dest = pg + ".html";
@@ -15,13 +22,18 @@ function weapon(){
 	return false;
     }
     var fire = function(e){
+	e.stopPropagation();
+	//accelWatch();
 	var num = selected;
 	switch(num){
-	case "nothing": return false;
-	case 0: counter++; break;         //can add cases in future for traps and stuff
+	case "nothing": return false;	
+	case 0:
+	    counter++;
+	    accelWatch();
+	    break;         //can add cases in future for traps and stuff
 	default: break;
 	}	
-	if (e.type === "mouseup"){
+	if (e.type === "touchend"){
 	    fired[num]++;
 	    select(num);
 	}
@@ -30,26 +42,27 @@ function weapon(){
     return [select,fire];
 }
 
+
+
 var RANDOMSTRINGNAME = weapon();
 var weap = RANDOMSTRINGNAME[0];
 var fireWeap = RANDOMSTRINGNAME[1];
 
 var ele = document.getElementsByClassName("shoot");
-ele[0].addEventListener("mouseup",fireWeap);
-ele[0].addEventListener("mousedown",fireWeap);
 
-//=======Globals====================================================
-var watchID = null;
-var motionArray = [];
-var dodgeBallArray = [];
-var counter = 0;
-var currentHeading,lat,longit;
+//The reason I added touchstart/cancel/end is because if the button is let go without the touchend, the button will just break. It's to catch the "error," which is touchend.
+ele[0].addEventListener("touchstart",fireWeap);
+ele[0].addEventListener("touchcancel",fireWeap);
+ele[0].addEventListener("touchend",fireWeap);
+
 
 //====Dodgeball constructor=========================================
-function Dodgeball(heading, deltaX, deltaY, deltaZ, lat, longit){
+function Dodgeball(heading, deltaY, deltaZ, lat, longit){
     this.heading = heading;
     this.lat = lat;
     this.longit = longit;
+    this.deltaY = deltaY;
+    this.deltaZ = deltaZ;
     alert("Made new Dodgeball");
 }
 
@@ -74,7 +87,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-	startWatch();
+	//startWatch();
 //	go();
     },
     // Update DOM on a Received Event
@@ -82,30 +95,28 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
-
+	
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
+	
         console.log('Received Event: ' + id);
     }
 };
 
-function startWatch(){
-    var optns = { frequency : 500};
-    watchID = navigator.accelerometer.watchAcceleration(watchSuccess, onError, optns);
+function accelWatch(){
+    navigator.accelerometer.getCurrentAcceleration(watchSuccess, onError);
 }
 
 function watchSuccess(acceleration){
-    if (counter > 1){
+    //    if (counter >= 1){
 	motionArray.push(acceleration.x);
 	motionArray.push(acceleration.y);
 	motionArray.push(acceleration.z);
-	counter--;
-	if (motionArray.length==6){
-	    motionDetector();
-	}
+    if (motionArray.length==6){
+	motionDetector();
+	//	}
     }
-
+    
     /*
     document.getElementById('accx').innerHTML = acceleration.x;
     document.getElementById('accy').innerHTML = acceleration.y;
@@ -119,21 +130,21 @@ function watchSuccess(acceleration){
     }
     */
 }
-
 function motionDetector(){
+    alert("ball thrown!");
     z = motionArray.pop();
     y = motionArray.pop();
     x = motionArray.pop();
     z1 = motionArray.pop();
     y1 = motionArray.pop();
     x1 = motionArray.pop();
-    if(z1 - z >= 3 ||
+   if(z1 - z >= 3 ||
        x1 - x >= 3 ||
        y1 - y >= 3){
-	alert("You threw a ball");
+    	alert("You threw a ball");
 	dodgeBallArray.push(new Dodgeball(currentHeading,
-				     x1-x, y1-y,z1-z,
-				      lat, longit));
+					  y1-y,z1-z,
+					  lat, longit));
     }
 }
 
@@ -174,15 +185,51 @@ function getForce(){
     navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
 }
 
+
+//Animates the ball
 function go(){
-    var dbinfo = "";
-    for (var i = 0; i < dodgeBallArray.length;i++){
-    	dbinfo+= "<br>" + "dodgeBallNumber " + i + "<br>" +
-    	    "Heading: " + dodgeBallArray[i].heading + "<br>" +
-    	    "Latitude: " + dodgeBallArray[i].lat + "<br>" +
-    	    "Longitude: " + dodgeBallArray[i].longit + "<br>"
-    }
+    // var dbinfo = "";
+    // for (var i = 0; i < dodgeBallArray.length;i++){
+    // 	dbinfo+= "<br>" + "dodgeBallNumber " + i + "<br>" +
+    // 	    "Heading: " + dodgeBallArray[i].heading + "<br>" +
+    // 	    "Latitude: " + dodgeBallArray[i].lat + "<br>" +
+    // 	    "Longitude: " + dodgeBallArray[i].longit + "<br>"
+    // }
     
-    document.getElementById('dodgeballs').innerHTML = dbinfo;
-    setTimeout(go,300);
+    // document.getElementById('dodgeballs').innerHTML = dbinfo;
+    // setTimeout(go,300);
+    for(var i = 0; i < dodgeBallArray.length;i++){
+	var acc = dodgeBallArray[i].deltaZ/10;
+	var height = dodgeBallArray[i].deltaY/10;
+	var heading = parseFloat(dodgeBallArray[i].heading);
+	var constant = .0000028 * dodgeBallArray[i].deltaZ;
+	dodgeBallArray[i].deltaY/10 += -.918;
+	//Update Dodgeball
+	if(heading == 0 ){
+	    dodgeBallArray[i].longit += constant;
+	}else if(0 < heading < 90){
+	    dodgeBallArray[i].lat += constant;
+	    dodgeBallArray[i].longit += constant;
+	}else if(heading == 90){
+	    dodgeBallArray[i].lat += constant;
+	}else if (90 < heading < 180){
+	    dodgeBallArray[i].lat += constant;
+	    dodgeBallArray[i].longit -= constant;
+	}else if(heading = 180){
+	    dodgeBallArray[i].longit -= constant;
+	}else if(180 < heading < 270){
+	    dodgeBallArray[i].lat -= constant;
+	    dodgeBallArray[i].longit -= constant;
+	}else if(heading == 270){
+	    dodgeBallArray[i].lat -= constant;
+	}else if(270 < heading < 360){
+	    dodgeBallArray[i].lat -= constant;
+	    dodgeBallArray[i].longit += constant;
+	}
+	//Removes the Dodgeball
+	if(dodgeBallArray[i].deltaY/10 <= 0){
+	    dodgeBallArray.splice(i,1);
+	}
+    }
+
 }
