@@ -1,0 +1,42 @@
+<script src="socket.io/socket.io.js"></script>
+<script>
+ var socket = io.connect();
+ var idCode = undefined;
+ socket.on("connect",function(){
+   socket.on("authorized",function(data){
+     if (data['result']){
+       idCode = data['code'];
+     }
+     else {
+       //wrong password/username
+     }
+   });
+   
+   socket.on("added",function(data){
+     if (data['result']){
+       idCode = data['code'];
+     }
+     else{
+       //username already registered
+     }
+   });
+
+var login = function(){
+     var usr = document.getElementById("username").value;
+     var pw = document.getElementById("password").value;
+     socket.emit("login",{'usr':usr,'pw':pw});
+}
+
+var reg = function(){
+     var usr = document.getElementById("username").value;
+     var pw = document.getElementById("password").value;
+     var pw2 = document.getElementById("password2").value;
+     if (pw === pw2){
+       socket.emit("register",{'usr':usr,'pw':pw});
+     }
+     else{ 
+       //passwords do not match
+     }
+   }
+</script>
+

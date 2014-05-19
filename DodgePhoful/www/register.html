@@ -14,9 +14,10 @@
 	  <h1>Register</h1>
 	  <form>
 	    <ul class="signup">
+	      <li> <p id="err"></p>
 	      <li> <input type="text" name="username" placeholder="Username" autofocus></li>
 	      <li> <input type="password" name="pw" placeholder="Password"></li>
-	      <li> <input type="password" name="pw" placeholder="Confirm Password"></li>
+	      <li> <input type="password" name="pw2" placeholder="Confirm Password"></li>
 	      <li> <input type="submit" value="Register">      <button type="button" onclick="rd('login')">Have An Account</button></li>
 	    </ul>	    
 	</form>
@@ -26,6 +27,32 @@
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
       <script type="text/javascript" src="js/index.js"></script>
       <script type="text/javascript" src="phonegap.js"></script>
+      <script src="socket.io/socket.io.js"></script>
+      <script>	     
+       var socket = io.connect();
+       var idCode = undefined;
+       socket.on("connect",function(){
+	 socket.on("added",function(data){
+	   if (data['result']){
+	     idCode = data['code'];
+	   }
+	   else{
+	     document.getElementById("err").innerHTML="username take";
+	   }
+	 });
+       });
+       var reg = function(){
+	 var usr = document.getElementById("username").value;
+	 var pw = document.getElementById("pw").value;
+	 var pw2 = document.getElementById("pw2").value;
+	 if (pw === pw2){
+	   socket.emit("register",{'usr':usr,'pw':pw});
+	 }
+	 else{ 
+	   document.getElementById("err").innerHTML = "Passwords do not match";
+	 }
+       }
+      </script>
       <script type="text/javascript">
         app.initialize();
       </script>
