@@ -4,6 +4,96 @@ var motionArray = [];
 var dodgeBallArray = [];
 var counter = 0;
 var currentHeading,lat,longit;
+//=========login/register===========================================
+$.ajaxSetup({
+    cache: false
+});
+
+var regi = function(){
+    var name=$("#username")[0].value,pw=$("#pw")[0].value,pw2=$("#pw2")[0].value;
+    var line = $("#status")[0];
+    var data = {"name":name,"pw":pw};
+    $("#regi").attr("disabled","disabled");	    
+    if (pw === pw2){
+	$.ajax({
+	    type:"GET",
+	    url:"http://localhost:3000/register", // CHANGE THIS TO SERVER URL
+	    data:data,
+	    success:function(data){
+		if (data['status']){
+		    window.localStorage['username'] = name;
+		    $("#user")[0].innerHTML = window.localStorage["username"];
+//		    rd("index")
+		}
+		else {
+		    line.innerHTML = "username already registered";	
+		    $("#username")[0].value = "";
+		    $("#pw")[0].value = "";
+		    $("#pw2")[0].value="";
+		    $("#regi").removeAttr("disabled");
+		}
+	    }
+	});
+    }
+    else {
+	line.innerHTML = "passwords do not match";
+	$("#username")[0].value = "";
+	$("#pw")[0].value = "";
+	$("#pw2")[0].value="";     
+	$("#regi").removeAttr("disabled");
+    }
+};
+
+var login = function(){
+    var name = $("#username")[0].value, pw = $("#pw")[0].value;
+    var line = $("#status")[0];
+    var data = {"name":name,"pw":pw};
+   $("#login").attr("disabled","disabled");
+   $.ajax({
+     type:"GET",
+     url:"http://localhost:3000/login", //CHANGE THIS TO SERVER URL TOOOOOOOOO
+     data:data,
+     success:function(data){
+       if (data){
+	 window.localStorage['username'] = name;
+	 if (window.localStorage['username'] != undefined){
+	   $("#user")[0].innerHTML = window.localStorage["username"];
+	 }
+	   rd("index");	   	
+       }
+       else {
+	 line.innerHTML = "incorrect login info";
+	 $("#username")[0].value = "";
+	 $("#pw")[0].value = "";
+	 $("#login").removeAttr("disabled");
+       }
+     }
+   });
+ };
+
+var loaduser = function(){
+    console.log("running loaduser");
+    if (windows.localStorage['username'] != undefined){
+	$("#user")[0].innerHTML = windows.localStorage['username'];
+	alert("already logged in");
+	rd("index");
+    }
+};
+
+var hide = function(){
+    console.log("running hide");
+    if (windows.localStorage['username'] != undefined){
+	$("#current")[0].innerHTML = "Welcome"+windows.localStorage['username'];
+	$(".regi").toggle();
+	$(".login").toggle();
+    }
+    else{
+	$("#current").toggle();
+    }
+}
+
+$("#login").click(login);
+$("#regi").click(regi);
 
 //=======tmp=========================================================
 function rd(pg){

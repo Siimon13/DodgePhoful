@@ -14,21 +14,23 @@
 	  <h1>Register</h1>
 	  <form>
 	    <ul class="signup">
-	      <li> <p id="err"></p>
-	      <li> <input type="text" name="username" placeholder="Username" autofocus></li>
-	      <li> <input type="password" name="pw" placeholder="Password"></li>
-	      <li> <input type="password" name="pw2" placeholder="Confirm Password"></li>
-	      <li> <input type="submit" value="Register">      <button type="button" onclick="rd('login')">Have An Account</button></li>
+	      <li> <p id="status">status</p> <p id="user">user</p>
+	      <li> <input type="text" id="username" placeholder="Username" autofocus></li>
+	      <li> <input type="password" id="pw" placeholder="Password"></li>
+	      <li> <input type="password" id="pw2" placeholder="Confirm Password"></li>
+	      <li> <button type="button" id="regi">Register</button>      <button type="button" onclick="rd('login')">Have An Account</button></li>
 	    </ul>	    
 	</form>
 	  <button type="button" onclick="rd('index')">Home</button>
 	</center>
       </div>
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script type="text/javascript" src="js/index.js"></script>
       <script type="text/javascript" src="phonegap.js"></script>
       <script type="text/javascript">
         app.initialize();
+	loaduser();
       </script>
     </body>
     <br><br>
