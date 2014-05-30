@@ -37,9 +37,7 @@ app.get("/",function(req,res,next){
 
 app.get("/test",function(req,res,next){
     if (req.query.d != undefined){
-	var tmp = req.query.d;
-	tmp = tmp * 100;
-	res.send("tmp");
+	res.send({'d':req.query.d * 100 + 1});
     }
     else{
 	res.send(undefined);
