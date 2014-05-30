@@ -32,7 +32,18 @@ app.get("/register",function(req,res,next){
 });
  
 app.get("/",function(req,res,next){
-    res.redirect("/login");
+    res.send("hello world");
+});
+
+app.get("/test",function(req,res,next){
+    if (req.query.d != undefined){
+	var tmp = req.query.d;
+	tmp = tmp * 100;
+	res.send("tmp");
+    }
+    else{
+	res.send(undefined);
+    }
 });
 
 var server = app.listen(3000,function(){
