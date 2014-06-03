@@ -48,8 +48,14 @@ app.get("/test",function(req,res,next){
 });
 
 app.get("/lRoom",function9req,res,next){
-    
+    var data = [];
+    for (var i = 0;i < keys(rooms).length;i++){
+	data.push(keys(rooms)[i]);
+    }
+    res.send(data);
 }
+
+
 
 var server = app.listen(3000,function(){
     console.log("listening on 3000");

@@ -104,7 +104,7 @@ $("#regi").click(regi);
 
 //********************************** GAME ROOM ******************************
 //var rooms = {} = {key:[maxPlayers,list of players],key2:...}
-var 
+//var
 var initRoom = function(){
     var list = $(".lobby");
     var data = [];
