@@ -1,19 +1,22 @@
 var express = require('express');
+var bodyParser = require("body-parser");
 var app = express();
+app.use(bodyParser());
 
 app.all("*",function(req,res,next){
     res.header("Access-Control-Allow-Origin","*");
     res.header("Access-Control-Allow-Headers","X-Requested-With,Content-Type");
-    res.header("Access-Control-Allow-Methods","POST,GET,OPTIONS");
+    res.header("Access-Control-Allow-Methods","POST,GET");
     res.header("Content-Type","json");
     next();
 });
 
 var db = {};
+var rooms = {};
 
-app.get('/login',function(req,res,next){
-    if (db[req.query.name] != undefined) {
-	if (db[req.query.name] === req.query.pw) {
+app.post('/login',function(req,res,next){
+    if (db[req.body.name] != undefined) {
+	if (db[req.body.name] === req.body.pw) {
 	    res.send(true);
 	} 
 	else { res.send(false);}
@@ -21,10 +24,10 @@ app.get('/login',function(req,res,next){
     else {res.send(false);}
 });
    
-app.get("/register",function(req,res,next){
-    if (db[req.query.name] === undefined){
-	db[req.query.name] = req.query.pw;
-	var data = {"status":true,"name":req.query.name};
+app.post("/register",function(req,res,next){
+    if (db[req.body.name] === undefined){
+	db[req.body.name] = req.body.pw;
+	var data = {"status":true,"name":req.body.name};
 	res.send(data);
     }
     else { res.send(false);}
@@ -43,6 +46,10 @@ app.get("/test",function(req,res,next){
 	res.send(undefined);
     }
 });
+
+app.get("/lRoom",function9req,res,next){
+    
+}
 
 var server = app.listen(3000,function(){
     console.log("listening on 3000");

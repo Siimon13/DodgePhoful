@@ -16,14 +16,14 @@ var regi = function(){
     $("#regi").attr("disabled","disabled");	    
     if (pw === pw2){
 	$.ajax({
-	    type:"GET",
+	    type:"POST",
 	    url:"http://localhost:3000/register", // CHANGE THIS TO SERVER URL
 	    data:data,
 	    success:function(data){
 		if (data['status']){
 		    window.localStorage['username'] = name;
 		    $("#user")[0].innerHTML = window.localStorage["username"];
-//		    rd("index")
+		    rd("index")
 		}
 		else {
 		    line.innerHTML = "username already registered";	
@@ -31,9 +31,7 @@ var regi = function(){
 		    $("#pw")[0].value = "";
 		    $("#pw2")[0].value="";
 		    $("#regi").removeAttr("disabled");
-		}
-	    }
-	});
+		}}});
     }
     else {
 	line.innerHTML = "passwords do not match";
@@ -50,7 +48,7 @@ var login = function(){
     var data = {"name":name,"pw":pw};
    $("#login").attr("disabled","disabled");
    $.ajax({
-     type:"GET",
+     type:"POST",
      url:"http://localhost:3000/login", //CHANGE THIS TO SERVER URL TOOOOOOOOO
      data:data,
      success:function(data){
@@ -71,19 +69,11 @@ var login = function(){
    });
  };
 
-var loaduser = function(){
-    console.log("running loaduser");
-    if (windows.localStorage['username'] != undefined){
-	$("#user")[0].innerHTML = windows.localStorage['username'];
-	alert("already logged in");
-	rd("index");
-    }
-};
-
 var hide = function(){
     console.log("running hide");
-    if (windows.localStorage['username'] != undefined){
-	$("#current")[0].innerHTML = "Welcome"+windows.localStorage['username'];
+    if (window.localStorage['username'] != undefined){
+	console.log("not equal");
+	$("#current")[0].innerHTML = "Welcome"+window.localStorage['username'];
 	$(".regi").toggle();
 	$(".login").toggle();
     }
@@ -92,33 +82,74 @@ var hide = function(){
     }
 }
 
+var logout = function(){
+    window.localStorage.clear();
+    rd("index");
+}
+
+var hlog = function(){
+    if (window.localStorage["username"]!=undefined){rd("join");}
+    else{rd("login");}
+};
+
+var hreg = function(){
+    if (window.localStorage["username"]!=undefined){logout();}
+    else{rd("register");}
+};
+	
+$("#hlogin").click(hlog);
+$("#hregi").click(hreg);
 $("#login").click(login);
 $("#regi").click(regi);
 
-//***********************************TEST************************************
-
-var speed = function(){
-    for (var i = 0;i<1;i++){
-	$.ajax({
-	    type:"GET",
-	    url:"http://localhost:3000/test", // CHANGE THIS TO SERVER URL
-	    data:{d:i},
-	    success:function(data){
-		console.log("success");
-		if (data!=undefined){
-		    console.log("success");
-		    $("#results").append("<li>success</li>");
-		}
-		else{
-		    console.log("fail");
-		    $("#results").append("<li>fail</li>");
-		}
-	    }//success
-	});//ajax
-    }//for
-};//speed
-
-$("#test").click(speed);
+//********************************** GAME ROOM ******************************
+//var rooms = {} = {key:[maxPlayers,list of players],key2:...}
+var 
+var initRoom = function(){
+    var list = $(".lobby");
+    var data = [];
+    list.empty();
+    $.ajax({
+	type:"GET",
+	url:"http://localhost:3000/lRoom", //CHANGE THIS TO SERVER UR TOO
+	data:"lroom",
+	success:function(d){data = d;}
+    });
+    for (var i = 0;i<data.length;i++){
+	list.append("<li>"+data[i][0]+" "+data[i][1]+"/"+data[i][2]+"</li>");
+    }    
+    $("li").dblclick(jRoom);
+};
+	    
+var pgup = function(){};
+var pgdown = function(){};
+var cRoom = function(){
+    var d = [window.localStorage.username,0,0];
+    $.ajax({
+	type:"GET",
+	url:"http://localhost:3000/cRoom",
+	data:d,
+	success:function(d){
+	    window.localStorage['game'] = d[0]+"'s room";
+	    rd('game');
+	}
+    });
+};
+var jRoom = function(){
+    var name = window.localStorage.username;
+    var room = this.innerHTML.split(" ")[1]+"'s room";
+    $.ajax({
+	type:"GET",
+	url:"http://localhost:3000/jRoom",
+	data:{"name":name,"room":room},
+	success:function(d){
+	    if (d){
+		window.localStorage['game'] = room;
+		rd('game');
+	    }
+	}
+    });
+};
 
 //=======tmp=========================================================
 function rd(pg){

@@ -11,40 +11,19 @@
     <body>
         <div>
             <h1>Game Lobby</h1>
-            <div id="stats">
-              <ul class="lobby">
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-		<li>Name:-n #Players:-#- Distance:-d- </li>
-	      </ul>
+            <div id="stats" onload="initRoom()">
+              <ul class="lobby"></ul>
+	      <!--
 		<button id="pgup" onclick="pgup()" type="button">Previous Page</button>
 		<button id="pgdn" onclick="pgdown()" type="button">Next Page</button>
+		-->
 		<center>
-		  <button id="join" onclick="jRoom()"  type="button">Join</button>
 		  <button id="create" onclick="cRoom()"  type="button">Create</button>
 		  <button id="back" onclick="rd('index')"  type="button">Back</button>
 		</center>
             </div>
         </div>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" ></script>
         <script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript">
