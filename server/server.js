@@ -47,7 +47,7 @@ app.get("/test",function(req,res,next){
     }
 });
 
-app.get("/lRoom",function9req,res,next){
+app.get("/lRoom",function(req,res,next){
     var data = [];
     for (var i = 0;i < keys(rooms).length;i++){
 	data.push(keys(rooms)[i]);
@@ -55,6 +55,13 @@ app.get("/lRoom",function9req,res,next){
     res.send(data);
 }
 
+app.get("/jRoom",function(req,res,next){
+
+});
+
+app.get("/cRoom",function(req,res,next){
+
+});
 
 
 var server = app.listen(3000,function(){
