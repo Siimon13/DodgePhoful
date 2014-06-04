@@ -55,8 +55,16 @@ app.get("/lRoom",function(req,res,next){
     res.send(data);
 }
 
-app.get("/jRoom",function(req,res,next){
-
+app.post("/jRoom",function(req,res,next){
+    var n = req.body.roomName;
+    if (rooms.n != undefined){
+	if (rooms.n[2] < rooms.n[3]){
+	    rooms.n[2] += 1;
+	    res.send({"stat":true,"err":undefined});
+	}
+	res.send({"stat":false,"err":"room full"});
+    }
+    res.send({"stat":false,"err":"room no longer exist"});
 });
 
 app.get("/cRoom",function(req,res,next){
