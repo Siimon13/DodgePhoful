@@ -11,8 +11,9 @@ app.all("*",function(req,res,next){
     next();
 });
 
-var db = {};
-var rooms = {};
+var db = {};//{<username>:<pw>,<username2>:...}
+var rooms = {};//{<roomName>:[[users],current#,max#],<roomName2>:...} maybe add location later
+var games = {};//[<roomName>:[{<user1>:<alive?>,<user2>:...},[user pos in same index]]
 
 app.post('/login',function(req,res,next){
     if (db[req.body.name] != undefined) {
@@ -47,7 +48,7 @@ app.get("/test",function(req,res,next){
     }
 });
 
-app.get("/lRoom",function(req,res,next){
+app.post("/lRoom",function(req,res,next)){
     var data = [];
     for (var i = 0;i < keys(rooms).length;i++){
 	data.push(keys(rooms)[i]);
@@ -67,9 +68,26 @@ app.post("/jRoom",function(req,res,next){
     res.send({"stat":false,"err":"room no longer exist"});
 });
 
-app.get("/cRoom",function(req,res,next){
+app.post("/cRoom",function(req,res,next){
+    var n = req.body.roomName;
+    if (rooms.n === undefined){
+	rooms.n = [[req.body.userName],1,10];
+    }
+    else{
+	req.send({"stat":false,"err":"another room with the same name exists"});
+    }
+});
+
+app.post("setGame",function(req,res,next){//once room is filled w/ people, or host decides to start
+    var n = req.body.roomName;
+    for (var i = 0;i<rooms.n
 
 });
+	
+app.post("/updateP",function(req,res,next){
+    
+});
+
 
 
 var server = app.listen(3000,function(){

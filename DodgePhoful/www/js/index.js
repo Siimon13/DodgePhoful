@@ -103,7 +103,7 @@ $("#login").click(login);
 $("#regi").click(regi);
 
 //********************************** GAME ROOM ******************************
-//var rooms = {} = {key:[maxPlayers,list of players],key2:...}
+//var rooms = {} = {key:[list of players,listOfPlayers,MaxPlayers],key2:...}
 //var
 var initRoom = function(){
     var list = $(".lobby");
@@ -111,7 +111,7 @@ var initRoom = function(){
     list.empty();
     $.ajax({
 	type:"GET",
-	url:"http://localhost:3000/lRoom", //CHANGE THIS TO SERVER UR TOO
+	url:"http://localhost:3000/lRoom", //CHANGE THIS TO SERVER URL TOO
 	data:"lroom",
 	success:function(d){data = d;}
     });
@@ -124,9 +124,9 @@ var initRoom = function(){
 var pgup = function(){};
 var pgdown = function(){};
 var cRoom = function(){
-    var d = [window.localStorage.username,0,0];
+    var d = {"userName":window.localStorage.username,"roomName":window.localStorage.username +"'s room"};
     $.ajax({
-	type:"GET",
+	type:"POST",
 	url:"http://localhost:3000/cRoom",
 	data:d,
 	success:function(d){
@@ -135,11 +135,12 @@ var cRoom = function(){
 	}
     });
 };
+
 var jRoom = function(){
     var name = window.localStorage.username;
     var room = this.innerHTML.split(" ")[1]+"'s room";
     $.ajax({
-	type:"GET",
+	type:"POST",
 	url:"http://localhost:3000/jRoom",
 	data:{"name":name,"room":room},
 	success:function(d){
