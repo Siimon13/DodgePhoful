@@ -103,54 +103,68 @@ $("#login").click(login);
 $("#regi").click(regi);
 
 //********************************** GAME ROOM ******************************
-//var rooms = {} = {key:[list of players,listOfPlayers,MaxPlayers],key2:...}
-//var
+
 var initRoom = function(){
     var list = $(".lobby");
     var data = [];
     list.empty();
     $.ajax({
-	type:"GET",
-	url:"http://localhost:3000/lRoom", //CHANGE THIS TO SERVER URL TOO
-	data:"lroom",
-	success:function(d){data = d;}
+	type:"POST",
+	url:"http://localhost:3000/initRoom", //CHANGE THIS TO SERVER URL TOO
+	data:{"d":"ListRoom"},
+	success:function(d){
+	    data = d;
+	    for (var i = 0;i<data.length;i++){
+		list.append("<li>"+data[i][0]+" &nbsp&nbsp&nbsp&nbsp&nbsp "+data[i][2]+"/"+data[i][3]+"</li>");
+	    }    
+	    $("li").dblclick(jRoom);   
+	}
     });
-    for (var i = 0;i<data.length;i++){
-	list.append("<li>"+data[i][0]+" "+data[i][1]+"/"+data[i][2]+"</li>");
-    }    
-    $("li").dblclick(jRoom);
 };
-	    
-var pgup = function(){};
-var pgdown = function(){};
+
 var cRoom = function(){
-    var d = {"userName":window.localStorage.username,"roomName":window.localStorage.username +"'s room"};
+    var da = {"userName":window.localStorage.username,"roomName":window.localStorage.username +"'s room"};
     $.ajax({
 	type:"POST",
 	url:"http://localhost:3000/cRoom",
-	data:d,
+	data:da,
 	success:function(d){
-	    window.localStorage['game'] = d[0]+"'s room";
-	    rd('game');
+	    if (d.stat != false){
+		window.localStorage['game'] = da[0]+"'s room";
+		rd('game');
+	    }
 	}
     });
 };
 
 var jRoom = function(){
     var name = window.localStorage.username;
-    var room = this.innerHTML.split(" ")[1]+"'s room";
+    var room = this.innerHTML.split(" &nbsp")[0];
     $.ajax({
 	type:"POST",
 	url:"http://localhost:3000/jRoom",
-	data:{"name":name,"room":room},
+	data:{"name":name,"roomName":room},
 	success:function(d){
-	    if (d){
+	    if (d.stat){
 		window.localStorage['game'] = room;
 		rd('game');
 	    }
 	}
     });
 };
+
+var qRoom = function(){
+    window.localStorage.game = undefined;
+    $.ajax({
+	type:"POST",
+	url:"http://localhost:3000/qRoom",
+	data:{"name":window.localStorage.username,"roomName":window.localStorage.game},
+	success:function(d){
+	    rd('index');
+	}
+    });
+};
+
 
 //=======tmp=========================================================
 function rd(pg){
