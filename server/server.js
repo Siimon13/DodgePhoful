@@ -72,8 +72,8 @@ app.post("/jRoom",function(req,res,next){
 
 app.post("/cRoom",function(req,res,next){
     var n = req.body.roomName;
-    if (rooms.n === undefined){
-	rooms.n = [[req.body.userName],1,10];
+    if (rooms[n] === undefined){
+	rooms[n] = [[req.body.userName],1,10];
 	res.send({"stat":true,"err":undefined});
     }
     else{
@@ -83,42 +83,54 @@ app.post("/cRoom",function(req,res,next){
 
 app.post("/qRoom",function(req,res,next){
     var name = req.body.name;
-    var game = req.body.game;
-    var target = rooms[game][0].indexOf(name);
-    rooms[game][0].splice(target,1);
-    console.log(rooms[game]);
+    var game = req.body.roomName;
+    if (rooms[game] != undefined){
+	var target = rooms[game][0].indexOf(name);
+	rooms[game][0].splice(target,1);
+	rooms[game][1]-= 1;
+	if (rooms[game][0].length === 0){
+	    delete rooms[game];
+	}
+	res.send(true);
+    }
+    else{
+	delete games[game][name];
+	res.send(true);
+    }    
 });
 
-app.post("setGame",function(req,res,next){//once room is filled w/ people,or host decides to start
+app.post("/setGame",function(req,res,next){//once room is filled w/ people,or host decides to start
     var n = req.body.roomName;
     var d = {}
-    for (var i = 0;i<rooms.n[0].length;i++){
-	d.rooms.n[0][i] = [true,{'x':0.0,'y':0.0}];
+    console.log(n);
+    for (var i = 0;i<rooms[n][0].length;i++){
+	d[rooms[n][0][i]] = [true,{'x':0.0,'y':0.0}];
     }
-    games.n = d;
-    delete rooms.n;
+    games[n] = d;
+    delete rooms[n];
+    res.send(true);
 });
 
 app.post("/updateP",function(req,res,next){
     var game = req.body.game;
-    var player = req.body.player;
+    var player = req.body.usr;
     var x =req.body.xC, y = req.body.yC;
-    games.game.player[1].x = x;
-    games.game.player[1].y = y;
+    games[game][player][1].x = x;
+    games[game][player][1].y = y;
 });
 
 app.post("/collide",function(req,res,next){
     var x = req.body.xC,y=req.body.yC; //ball's xy/geo coord
     var origin = req.body.usr; // user that threw the ball
     var game = req.body.game; //the gameroom, windows.localStorage.game
-    var keys = Object.keys(games.game);
+    var keys = Object.keys(games[game]);
     var stat = false;
     var acc = 0.000000; //*******************************ACCURACY*******************
     for (var i = 0;i<keys.length;i++){
 	if (keys[i] != origin){
-	    if ((Math.abs(x-games.game.keys[i][1].x)<=acc)&&(Math.abs(y-games.game.keys[i][1].y)<=acc)){
+	    if ((Math.abs(x-games[game][keys[i]][1].x)<=acc)&&(Math.abs(y-games[game][keys[i]][1].y)<=acc)){
 		stat = true;
-		games.game.keys[i][0] = false;
+		games[game][keys[i]][0] = false;
 	    }
 	}
     }
@@ -128,10 +140,10 @@ app.post("/collide",function(req,res,next){
 app.post("/eliminate",function(req,res,next){
     var game = req.body.game;
     var name = req.body.name; //username
-    if (!games.game.name[0]){
+    if (!games[game][name][0]){
 	req.send({"stat":false}); //dead
     }
-    else if (games.game.name[0]){
+    else if (games[game][name][0]){
 	req.send({"stat":true}); //still alive
     }
     else {

@@ -104,6 +104,12 @@ $("#regi").click(regi);
 
 //********************************** GAME ROOM ******************************
 
+var hideStart = function(){
+    if (window.localStorage.username != window.localStorage.game.split('"')[0]){
+	$("#startbtn").hide(0);
+    }
+}
+
 var initRoom = function(){
     var list = $(".lobby");
     var data = [];
@@ -123,14 +129,14 @@ var initRoom = function(){
 };
 
 var cRoom = function(){
-    var da = {"userName":window.localStorage.username,"roomName":window.localStorage.username +"'s room"};
+    var da = {"userName":window.localStorage.username,"roomName":window.localStorage.username+'"s room'};
     $.ajax({
 	type:"POST",
 	url:"http://localhost:3000/cRoom",
 	data:da,
 	success:function(d){
 	    if (d.stat != false){
-		window.localStorage['game'] = da[0]+"'s room";
+		window.localStorage['game'] = da.roomName;;
 		rd('game');
 	    }
 	}
@@ -153,14 +159,95 @@ var jRoom = function(){
     });
 };
 
+var fork = function(){ //start game and quit room switch
+    if (window.localStorage.start != undefined){
+	qRoom();
+    }
+    else {sRoom();}
+};
+
+var sRoom = function(){
+    var room = window.localStorage.game;
+    $.ajax({
+	type:"POST",
+	url:"http://localhost:3000/setGame",
+	data:{"roomName":room},
+	success:function(){
+	    window.localStorage.start = true;
+	}
+    });
+};
+
 var qRoom = function(){
-    window.localStorage.game = undefined;
     $.ajax({
 	type:"POST",
 	url:"http://localhost:3000/qRoom",
 	data:{"name":window.localStorage.username,"roomName":window.localStorage.game},
 	success:function(d){
+	    window.localStorage.removeItem("game");
+	    window.localStorage.removeItem("start");	    
 	    rd('index');
+	}
+    });
+};
+
+//****************************Update ball/player********************
+var update = function(){ // would want to nest the fxn in the order u want to update them
+    var name = window.localStorage.username;
+    var game = window.localStorage.game;
+    //
+    var xp = 0;  
+    var yp = 0; 
+    //change ^^^ to something that will get you the player's position
+    //
+    var datum = {"usr":name,"game":game,"xC":xp,"yC":yp};    
+    $.ajax({           // updates player coordinates.
+	type:"POST",
+	url:"http://localhost:3000/updateP",
+	data:datum,
+	success:function(d){
+	    //something that updates ball position
+	}
+    });
+};
+
+
+//checks if balls r colliding with any player other than the one who threw it
+var checkCollision = function(ball){ //maybe pass in the ball? up to u
+    var game = window.localStorage.game;
+    //
+    var origin = window.localSotrage.username; 
+    //^ the person who threw the ball, if not the current user, then change this to soemthing else.
+    //
+    var xp = 0;
+    var yp = 0;
+    // ^^^ something that gives you THE BALL's position
+    //
+    var datum = {"usr":origin,"game":game,"xC":xp,"yC":yp};
+    $.ajax({
+	type:"POST",
+	url:"http://localhost:3000/collide",
+	data:datum,
+	success:function(d){
+	    //d will be true or false, if true someone died, if false it didn't hit anything.
+	    //so make ball die if true? up to u
+	}
+    });
+};
+
+//every player should runs this to check if he/she died yet after the balls checked collision
+var checkIfOut = function(){
+    var game = window.localStorage.game;
+    var name = window.localStorage.username;
+    var datum = {"name":name,"game":game};
+    $.ajax({
+	type:"POST",
+	url:"http://localhost:3000/eliminate",
+	data:datum,
+	success:function(d){
+	    //this will return true, false, or undefined.
+	    //true if player still alive, false if not, and undefined if bug.
+	    //if false, remove player? somehow inform his death
 	}
     });
 };
@@ -203,13 +290,11 @@ function weapon(){
     return [select,fire];
 }
 
-
-
 var RANDOMSTRINGNAME = weapon();
 var weap = RANDOMSTRINGNAME[0];
 var fireWeap = RANDOMSTRINGNAME[1];
 
-var ele = document.getElementsByClassName("shoot");
+var ele = $("#shoot");
 
 //The reason I added touchstart/cancel/end is because if the button is let go without the touchend, the button will just break. It's to catch the "error," which is touchend.
 ele[0].addEventListener("touchstart",fireWeap);
