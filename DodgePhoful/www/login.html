@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html onload="loaduser">
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
@@ -14,19 +14,20 @@
 	  <h1>Login</h1>
 	  <form>
 	    <ul class="signin">
-	      <li> <input type="text" name="username" placeholder="Username" autofocus></li>
-	      <li> <input type="password" name="pw" placeholder="Password"></li>
-	      <li> <input type="submit" value="Log In">      <button type="button" onclick="rd('register')">Register</button></li>
+	      <li> <p id="status">STATUS</p>      <p id="user">NOT LOGGED IN</p>
+	      <li> <input type="text" id="username" placeholder="Username" autofocus></li>
+	      <li> <input type="password" id="pw" placeholder="Password"></li>
+	      <li> <button type="button" id="login">Log In</button>    <button type="button" onclick="rd('register')">Register</button></li>
 	    </ul>	    
 	</form>
 	  <button type="button" onclick="rd('index')">Back</button>
 	</center>
       </div>
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script type="text/javascript" src="js/index.js"></script>
       <script type="text/javascript" src="phonegap.js"></script>
       <script type="text/javascript">
-        app.initialize();
+       app.initialize();
       </script>
     </body>
     <br><br>

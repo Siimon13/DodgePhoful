@@ -1,0 +1,10 @@
+{
+  "name":"zzz",
+  "descriptiopn":"testing",
+  "version":"0.0.1",
+  "private":true,
+  "dependencies":{
+    "express":"4.2.0",
+    "body-parser":"1.2.0"
+  }
+}

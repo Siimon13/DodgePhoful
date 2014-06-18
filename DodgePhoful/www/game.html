@@ -41,15 +41,19 @@
 	<img src="./img/trap01.png" height="20%" width="20%" onclick="weap('1')" />
 	<img src="./img/trap02.png" height="20%" width="20%" onclick="weap('2')" />
 	<img src="./img/trap03.png" height="20%" width="20%" onclick="weap('3')" />
-	<br><button name="rindex" onclick="rd('index')" type="button">End Game</button>	  
+	<br><button id="rindex" onclick="qRoom()" type="button">End Game</button>
+	<button id="startbtn" onclick="sRoom()" type="button">Start Game</button>
 	
       </center>
     </div>
     <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/radar.js"></script>
     <script type="text/javascript" src="phonegap.js"></script>
-    <script type="text/javascript">app.initialize();</script>
+    <script type="text/javascript">
+      hideStart();
+      app.initialize();</script>
   </body>
 </html>

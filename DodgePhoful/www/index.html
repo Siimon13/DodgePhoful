@@ -10,21 +10,26 @@
     </head>
     <body>
       <div>
+	<p id="#user"></p>		  		  
         <center>
 	  <div class="title">
 	    <img src="img/title.png" width="80%" height="80%">
 	  </div>
+	  <div>
+	    <p id="current"></p>
 	  <div class="login">
-	    <img src="img/login.png" onclick="rd('login')" width="100%" height="100%">
+	    <img src="img/login.png" id="hlogin" width="100%" height="100%">
 	  </div>
 	  <div class="regi">
-          <img src="img/regi.png" width="80%" height="80%" onclick="rd('register')">	   
+          <img src="img/regi.png" width="80%" height="80%" id="hregi">	   
+	  </div>
 	  </div>
           <button type="button" onclick="rd('game')" >Start Game</button>
           <button type="button" onclick="rd('join')" >Lobby</button>
+	  <button type="button" onclick="rd('speedtest')" >Test</button>
         </center>
       </div>
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" ></script>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
       <script type="text/javascript" src="js/index.js"></script>
       <script type="text/javascript" src="phonegap.js"></script>
       <script type="text/javascript">
